@@ -23,5 +23,6 @@ urlpatterns = [
     path('settings/password/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),name='password_change_done'),
     re_path('^boards/(?P<pk>\d+)/$', views.board_topics, name='board_topics'),
     re_path('^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
+    re_path('^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/$', views.topic_posts, name='topic_posts'),
 
 ]
