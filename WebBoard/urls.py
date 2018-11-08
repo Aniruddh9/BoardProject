@@ -8,7 +8,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', views.BoardListView.as_view(), name='home'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('signup/',account_views.signup, name='signup'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
@@ -20,10 +20,11 @@ urlpatterns = [
     path('reset/complete/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),name='password_reset_complete'),
     path('settings/password', auth_views.PasswordChangeView.as_view(template_name='password_change.html'), name='password_change'),
     path('settings/password/done/', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),name='password_change_done'),
+    path('settings/account/', account_views.UserUpdateView.as_view(), name='my_account'),
     re_path('^boards/(?P<pk>\d+)/$', views.board_topics, name='board_topics'),
     re_path('^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
     re_path('^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/reply/$', views.reply_topic, name='reply_topic'),
-    re_path('^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/$', views.topic_posts, name='topic_posts'),
+    re_path('^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/$', views.PostListView.as_view(), name='topic_posts'),
     re_path('^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
-
+    re_path('^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/posts/(?P<post_pk>\d+)/edit/$',views.PostUpdateView.as_view(), name='edit_post'),
 ]
