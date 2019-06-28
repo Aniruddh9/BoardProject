@@ -22,7 +22,7 @@ SECRET_KEY = 'rqr_cjv4igscyu8&&(0%e(=sy=f2)p=f_wn&@0xsp7m$@!kp=d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -35,12 +35,30 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-
     'widget_tweaks',
-
+    'django_jenkins',
     'accounts',
     'boards',
+    'django_nose',
 ]
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+
+    '--cover-erase',
+
+    '--cover-package=WebBoard',
+]
+
+PROJECT_APPS = (
+ 'WebBoard'
+)
+
+JENKINS_TASKS = (
+ 'django_jenkins.tasks.run_pep8',
+ 'django_jenkins.tasks.run_pyflakes'
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

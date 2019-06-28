@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
+import coverage
 
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WebBoard.settings')
@@ -13,3 +14,19 @@ if __name__ == '__main__':
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+
+
+is_testing = 'test' in sys.argv
+
+if is_testing:
+    cov = coverage.coverage(source=['app'], omit=['*/tests/*'])
+    cov.set_option('report:show_missing', True)
+    cov.erase()
+    cov.start()
+
+execute_from_command_line(sys.argv)
+
+if is_testing:
+    cov.stop()
+    cov.save()
+    cov.report()
