@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'widget_tweaks',
-    'django_jenkins',
     'accounts',
+    'django_jenkins',
     'boards',
     'django_nose',
 ]

@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse, resolve
 from .views import home, board_topics
 from django.contrib.auth.models import User
-from .views import new_topic
+from .views import new_topic, home
 from .models import Board, Topic, Post
 
 
@@ -45,6 +45,7 @@ class NewTopicTests(TestCase):
     def setUp(self):
         Board.objects.create(name='Django', description='Django board.')
         User.objects.create_user(username='john', email='john@doe.com', password='123')  # <- included this line here
+        self.client.login(username='john', password='123')
 
     # ...
 
@@ -59,7 +60,7 @@ class NewTopicTests(TestCase):
             'subject': 'Test title',
             'message': 'Lorem ipsum dolor sit amet'
         }
-        response = self.client.post(url, data)
+        self.client.post(url, data)
         self.assertTrue(Topic.objects.exists())
         self.assertTrue(Post.objects.exists())
 
