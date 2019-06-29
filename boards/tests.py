@@ -25,7 +25,7 @@ class HomeTest(TestCase):
 
 class BoardTopicsTest(TestCase):
     def setUp(self):
-        Board.objects.create(name='Django', description='Django Board.')
+        Board.objects.create(name='Django_test', description='Django Board.')
 
     def test_board_topic_succes_code(self):
         url = reverse('board_topics', kwargs={'pk': 1})
