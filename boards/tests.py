@@ -43,7 +43,7 @@ class BoardTopicsTest(TestCase):
 
 class NewTopicTests(TestCase):
     def setUp(self):
-        Bceoard.objects.create(name='Django_new', description='Django board.')
+        Board.objects.create(name='Django_new', description='Django board.')
         User.objects.create_user(username='john', email='john@doe.com', password='123')  # <- included this line here
         self.client.login(username='john', password='123')
 
