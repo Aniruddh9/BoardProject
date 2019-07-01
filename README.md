@@ -31,6 +31,8 @@ To run test cases :
 Nosetest is integrated, all the nosetest arguments can be passed to the above command.
 
 Example : 
-		python manage.py -h
-		python manage.py test -vv 
-		python manage.py -with-xunit
+	python manage.py -h
+	
+	python manage.py test -vv
+	
+	python manage.py -with-xunit
