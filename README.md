@@ -30,7 +30,8 @@ To run test cases :
 	
 Nosetest is integrated, all the nosetest arguments can be passed to the above command.
 
-Example : 
+Example :
+
 	python manage.py -h
 	
 	python manage.py test -vv
