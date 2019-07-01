@@ -32,7 +32,7 @@ Nosetest is integrated, all the nosetest arguments can be passed to the above co
 
 Example :
 
-	python manage.py -h
+	python manage.py test -h
 	
 	python manage.py test -vv
 	
